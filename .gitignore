@@ -1,0 +1,11 @@
+# Crée le fichier .gitignore avec ce contenu :
+# Windows/Mac
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Variables d'environnement (jamais sur GitHub !)
+.env
+.env.local

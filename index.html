@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Imad Eddine Belhouideg — DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f6f3;
+      --surface: #ffffff;
+      --surface2: #f0efe9;
+      --border: #e4e2da;
+      --text: #1a1a18;
+      --text-muted: #6b6b65;
+      --accent: #1a1a18;
+      --accent2: #4a6741;
+      --tag-bg: #eceae2;
+      --tag-text: #3a3a36;
+      --radius: 12px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(247,246,243,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 9px 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    .nav-cta:hover { opacity: 0.8; }
+
+    /* ── HERO ── */
+    #accueil {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 60px 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.5;
+    }
+    .hero-grid-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 60% 40%, transparent 40%, var(--bg) 100%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      color: var(--accent2);
+      background: rgba(74,103,65,0.08);
+      border: 1px solid rgba(74,103,65,0.2);
+      padding: 6px 14px; border-radius: 20px;
+      margin-bottom: 32px;
+      letter-spacing: 0.08em;
+      animation: fadeUp 0.6s ease both;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent2);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent2);
+    }
+
+    .hero-sub {
+      font-size: 18px; font-weight: 300;
+      color: var(--text-muted);
+      margin-top: 20px; max-width: 520px;
+      line-height: 1.7;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 14px; margin-top: 40px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      font-size: 14px; font-weight: 500;
+      padding: 13px 28px;
+      background: var(--accent);
+      color: #fff; border-radius: 8px;
+      text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,26,24,0.15); }
+
+    .btn-secondary {
+      font-size: 14px; font-weight: 500;
+      padding: 13px 28px;
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .btn-secondary:hover { border-color: var(--text); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 40px;
+      margin-top: 64px; padding-top: 40px;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px; line-height: 1;
+      color: var(--text);
+    }
+    .stat-label {
+      font-size: 12px; font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    /* ── SECTIONS COMMONS ── */
+    section { padding: 100px 60px; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--text-muted);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 4vw, 52px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px; font-weight: 300;
+      color: var(--text-muted); max-width: 480px;
+      line-height: 1.7; margin-bottom: 56px;
+    }
+
+    /* ── À PROPOS ── */
+    #apropos { background: var(--surface); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .about-text p {
+      font-size: 16px; font-weight: 300;
+      color: var(--text-muted); line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-tools { margin-top: 32px; }
+    .about-tools h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .tool-list {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .tool-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 400;
+      padding: 6px 12px;
+      background: var(--tag-bg); color: var(--tag-text);
+      border-radius: 4px;
+      transition: background var(--transition);
+    }
+    .tool-tag:hover { background: var(--border); }
+
+    .about-info { display: flex; flex-direction: column; gap: 0; }
+    .info-card {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .info-card:first-child { border-top: 1px solid var(--border); }
+    .info-key {
+      font-size: 13px; font-weight: 400; color: var(--text-muted);
+    }
+    .info-val {
+      font-size: 13px; font-weight: 500; color: var(--text);
+      text-align: right;
+    }
+
+    /* ── COMPÉTENCES ── */
+    #competences { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent2);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,26,24,0.08); }
+    .skill-card:hover::before { transform: scaleX(1); }
+
+    .skill-icon {
+      font-size: 22px; margin-bottom: 14px;
+    }
+    .skill-name {
+      font-size: 15px; font-weight: 600; color: var(--text);
+      margin-bottom: 8px;
+    }
+    .skill-desc {
+      font-size: 13px; font-weight: 300; color: var(--text-muted);
+      line-height: 1.6; margin-bottom: 16px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; padding: 4px 9px;
+      background: var(--tag-bg); color: var(--tag-text);
+      border-radius: 3px;
+    }
+
+    /* ── PROJETS ── */
+    #projets { background: var(--surface); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,26,24,0.1); }
+
+    .project-header {
+      padding: 28px 28px 0;
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .project-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500; color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+    .project-status {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      padding: 4px 10px; border-radius: 20px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .status-progress { background: rgba(74,103,65,0.1); color: var(--accent2); }
+    .status-planned { background: rgba(107,107,101,0.1); color: var(--text-muted); }
+    .status-done { background: rgba(26,26,24,0.08); color: var(--text); }
+
+    .project-body { padding: 16px 28px 24px; flex: 1; }
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px; line-height: 1.2;
+      color: var(--text); margin-bottom: 10px;
+    }
+    .project-desc {
+      font-size: 14px; font-weight: 300; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 20px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .project-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; padding: 4px 10px;
+      background: var(--surface); color: var(--tag-text);
+      border: 1px solid var(--border); border-radius: 3px;
+    }
+
+    .project-footer {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 12px;
+    }
+    .project-link {
+      font-size: 12px; font-weight: 500; color: var(--text-muted);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 5px;
+      transition: color var(--transition);
+    }
+    .project-link:hover { color: var(--text); }
+
+    .add-project-card {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px 28px;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      text-align: center; gap: 12px;
+    }
+    .add-project-card:hover { border-color: var(--text-muted); background: var(--surface2); }
+    .add-icon { font-size: 28px; opacity: 0.3; }
+    .add-text {
+      font-size: 13px; font-weight: 400; color: var(--text-muted);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 100px 60px;
+    }
+    #contact .section-label { color: rgba(255,255,255,0.4); justify-content: center; }
+    #contact .section-label::before { background: rgba(255,255,255,0.3); }
+    #contact .section-title { color: #fff; text-align: center; margin-bottom: 16px; }
+    #contact .section-desc { color: rgba(255,255,255,0.6); text-align: center; margin: 0 auto 48px; }
+
+    .contact-links {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    }
+    .contact-btn {
+      font-size: 13px; font-weight: 500;
+      padding: 13px 28px; border-radius: 8px;
+      text-decoration: none;
+      transition: transform var(--transition), opacity var(--transition);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .contact-btn:hover { transform: translateY(-2px); opacity: 0.85; }
+    .contact-btn.light { background: #fff; color: var(--text); }
+    .contact-btn.outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+
+    .contact-form-wrap {
+      max-width: 480px; margin: 56px auto 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: left;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px; letter-spacing: 0.05em;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; padding: 12px 16px;
+      outline: none; resize: none;
+      transition: border-color var(--transition);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: rgba(255,255,255,0.4); }
+    .form-group textarea { height: 100px; }
+
+    .form-submit {
+      width: 100%; padding: 13px;
+      background: #fff; color: var(--text);
+      border: none; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      transition: opacity var(--transition);
+    }
+    .form-submit:hover { opacity: 0.88; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 60px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 12px; color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      section, #accueil, #contact { padding: 80px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      footer { padding: 20px 24px; }
+    }
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#accueil">IEB.dev</a>
+  <ul class="nav-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Me contacter</a>
+</nav>
+
+<!-- HERO -->
+<section id="accueil">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Étudiant · Futur DevOps Engineer
+    </div>
+    <h1 class="hero-name">
+      Imad Eddine<br><em>Belhouideg</em>
+    </h1>
+    <p class="hero-sub">
+      Passionné par l'automatisation, l'infrastructure cloud et les pratiques CI/CD. Je construis des systèmes fiables et évolutifs.
+    </p>
+    <div class="hero-actions">
+      <a href="#projets" class="btn-primary">Voir mes projets →</a>
+      <a href="#contact" class="btn-secondary">Me contacter</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Projets en cours</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Outils maîtrisés</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Motivation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos">
+  <div class="reveal">
+    <div class="section-label">À propos</div>
+    <h2 class="section-title">Qui suis-je ?</h2>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>Je suis <strong>Imad Eddine Belhouideg</strong>, étudiant en informatique avec une passion profonde pour le monde du <strong>DevOps et du Cloud</strong>. Mon objectif est de devenir un ingénieur DevOps capable de concevoir des infrastructures robustes, automatiser les déploiements et améliorer la collaboration entre les équipes de développement et d'opérations.</p>
+      <p>J'apprends en construisant — pipelines CI/CD, conteneurisation avec Docker, orchestration Kubernetes, et infrastructure as code avec Terraform sont mes terrains de jeu actuels.</p>
+      <p>Je crois que la <strong>culture DevOps</strong> est autant une philosophie qu'un ensemble d'outils : collaboration, amélioration continue, et livraison rapide de valeur.</p>
+      <div class="about-tools">
+        <h4>Outils que j'utilise</h4>
+        <div class="tool-list">
+          <span class="tool-tag">Docker</span>
+          <span class="tool-tag">Kubernetes</span>
+          <span class="tool-tag">GitHub Actions</span>
+          <span class="tool-tag">Terraform</span>
+          <span class="tool-tag">Linux</span>
+          <span class="tool-tag">Bash</span>
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">Git</span>
+          <span class="tool-tag">Prometheus</span>
+          <span class="tool-tag">Grafana</span>
+          <span class="tool-tag">Nginx</span>
+          <span class="tool-tag">AWS</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-info">
+      <div class="info-card">
+        <span class="info-key">Statut</span>
+        <span class="info-val">🟢 Disponible (stages / alternance)</span>
+      </div>
+      <div class="info-card">
+        <span class="info-key">Localisation</span>
+        <span class="info-val">Maroc 🇲🇦</span>
+      </div>
+      <div class="info-card">
+        <span class="info-key">Formation</span>
+        <span class="info-val">Informatique / Systèmes & Réseaux</span>
+      </div>
+      <div class="info-card">
+        <span class="info-key">Langues</span>
+        <span class="info-val">Arabe · Français · Anglais</span>
+      </div>
+      <div class="info-card">
+        <span class="info-key">Intérêts</span>
+        <span class="info-val">Cloud, IaC, Site Reliability</span>
+      </div>
+      <div class="info-card">
+        <span class="info-key">GitHub</span>
+        <span class="info-val">github.com/imad-eddine</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="reveal">
+    <div class="section-label">Compétences</div>
+    <h2 class="section-title">Ce que je sais faire</h2>
+    <p class="section-desc">Un aperçu des domaines et technologies sur lesquels je travaille et me forme activement.</p>
+  </div>
+  <div class="skills-grid reveal">
+
+    <div class="skill-card">
+      <div class="skill-icon">🔄</div>
+      <div class="skill-name">CI/CD Pipelines</div>
+      <div class="skill-desc">Conception et automatisation de pipelines d'intégration et de déploiement continus pour des livraisons rapides et fiables.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">GitLab CI</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🐳</div>
+      <div class="skill-name">Conteneurisation</div>
+      <div class="skill-desc">Containerisation d'applications avec Docker et orchestration de clusters Kubernetes pour un déploiement scalable.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Helm</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-name">Cloud & IaC</div>
+      <div class="skill-desc">Provisionnement d'infrastructure cloud avec des outils d'Infrastructure as Code pour des environnements reproductibles.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">Ansible</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Monitoring & Observabilité</div>
+      <div class="skill-desc">Mise en place de stacks de supervision pour visualiser les métriques, logs et traces des systèmes en production.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Prometheus</span>
+        <span class="skill-tag">Grafana</span>
+        <span class="skill-tag">ELK Stack</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🐧</div>
+      <div class="skill-name">Linux & Scripting</div>
+      <div class="skill-desc">Administration de serveurs Linux, automatisation avec Bash et Python, gestion des processus et de la sécurité système.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Bash</span>
+        <span class="skill-tag">Python</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🔒</div>
+      <div class="skill-name">DevSecOps</div>
+      <div class="skill-desc">Intégration de la sécurité dans le cycle de développement : scanning de vulnérabilités, secrets management, politiques réseau.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Trivy</span>
+        <span class="skill-tag">SonarQube</span>
+        <span class="skill-tag">Vault</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="reveal">
+    <div class="section-label">Projets</div>
+    <h2 class="section-title">Ce que je construis</h2>
+    <p class="section-desc">Des projets concrets qui reflètent mon apprentissage et mes ambitions en DevOps.</p>
+  </div>
+  <div class="projects-grid reveal">
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-num">01</span>
+        <span class="project-status status-progress">En cours</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Pipeline CI/CD pour ce Portfolio</h3>
+        <p class="project-desc">Mise en place d'une pipeline complète GitHub Actions : lint, build, test, et déploiement automatique du portfolio sur un serveur cloud à chaque push sur main.</p>
+        <div class="project-tags">
+          <span class="project-tag">GitHub Actions</span>
+          <span class="project-tag">Docker</span>
+          <span class="project-tag">Nginx</span>
+          <span class="project-tag">AWS EC2</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">⟶ GitHub</a>
+        <a href="#" class="project-link">⟶ Live</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-num">02</span>
+        <span class="project-status status-planned">Planifié</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Infra Kubernetes sur AWS avec Terraform</h3>
+        <p class="project-desc">Provisionnement d'un cluster EKS avec Terraform, déploiement de microservices avec Helm, et monitoring avec Prometheus + Grafana.</p>
+        <div class="project-tags">
+          <span class="project-tag">Terraform</span>
+          <span class="project-tag">AWS EKS</span>
+          <span class="project-tag">Helm</span>
+          <span class="project-tag">Prometheus</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">⟶ GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-num">03</span>
+        <span class="project-status status-planned">Planifié</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Stack de Monitoring Complète</h3>
+        <p class="project-desc">Déploiement d'une stack ELK + Prometheus + Grafana via Docker Compose pour superviser une application web avec alerting automatique.</p>
+        <div class="project-tags">
+          <span class="project-tag">ELK Stack</span>
+          <span class="project-tag">Grafana</span>
+          <span class="project-tag">Docker Compose</span>
+          <span class="project-tag">Alertmanager</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">⟶ GitHub</a>
+      </div>
+    </div>
+
+    <div class="add-project-card">
+      <div class="add-icon">+</div>
+      <div class="add-text">Prochains projets à venir…<br>Revenez régulièrement 🚀</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Travaillons ensemble</h2>
+    <p class="section-desc">Vous avez une opportunité de stage, une question, ou juste envie d'échanger sur le DevOps ? Je suis disponible.</p>
+    <div class="contact-links">
+      <a href="mailto:imad@example.com" class="contact-btn light">✉ Email</a>
+      <a href="https://linkedin.com/in/imad-eddine" class="contact-btn outline">in LinkedIn</a>
+      <a href="https://github.com/imad-eddine" class="contact-btn outline">⌥ GitHub</a>
+    </div>
+  </div>
+  <div class="contact-form-wrap reveal">
+    <div class="form-group">
+      <label>Votre nom</label>
+      <input type="text" placeholder="Jean Dupont" />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="jean@exemple.com" />
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea placeholder="Bonjour Imad, je vous contacte pour…"></textarea>
+    </div>
+    <button class="form-submit">Envoyer le message →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2025 Imad Eddine Belhouideg — Fait avec ☕ & passion</span>
+  <div class="footer-links">
+    <a href="https://github.com/imad-eddine">GitHub</a>
+    <a href="https://linkedin.com/in/imad-eddine">LinkedIn</a>
+    <a href="#">CV</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+
+  // Contact form (demo)
+  document.querySelector('.form-submit').addEventListener('click', function() {
+    this.textContent = '✓ Message envoyé !';
+    this.style.background = 'rgba(74,103,65,0.2)';
+    this.style.color = '#a8c89e';
+    setTimeout(() => {
+      this.textContent = 'Envoyer le message →';
+      this.style.background = '';
+      this.style.color = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>
