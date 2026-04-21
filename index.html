@@ -6,6 +6,13 @@
   <title>Imad Eddine Belhouideg — DevOps Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ✅ EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("6oq6D_rliPMDQVnxX"); // ✅ Ta Public Key
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -42,38 +49,27 @@
       background: rgba(247,246,243,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      transition: var(--transition);
     }
-
     .nav-logo {
       font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 13px; font-weight: 500;
       letter-spacing: 0.05em;
-      color: var(--text);
-      text-decoration: none;
+      color: var(--text); text-decoration: none;
     }
-
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-decoration: none;
+      font-size: 13px; font-weight: 500;
+      color: var(--text-muted); text-decoration: none;
       letter-spacing: 0.02em;
       transition: color var(--transition);
     }
     .nav-links a:hover { color: var(--text); }
-
     .nav-cta {
       font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      font-weight: 500;
+      font-size: 12px; font-weight: 500;
       padding: 9px 20px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 6px;
       text-decoration: none;
       transition: opacity var(--transition);
     }
@@ -86,7 +82,6 @@
       padding: 120px 60px 80px;
       position: relative; overflow: hidden;
     }
-
     .hero-grid-bg {
       position: absolute; inset: 0;
       background-image:
@@ -100,9 +95,7 @@
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 70% 70% at 60% 40%, transparent 40%, var(--bg) 100%);
     }
-
     .hero-content { position: relative; z-index: 1; max-width: 860px; }
-
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: 'DM Mono', monospace;
@@ -120,20 +113,14 @@
       background: var(--accent2);
       animation: pulse 2s ease-in-out infinite;
     }
-
     .hero-name {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(52px, 7vw, 88px);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
+      line-height: 1.0; letter-spacing: -0.02em;
       color: var(--text);
       animation: fadeUp 0.6s 0.1s ease both;
     }
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent2);
-    }
-
+    .hero-name em { font-style: italic; color: var(--accent2); }
     .hero-sub {
       font-size: 18px; font-weight: 300;
       color: var(--text-muted);
@@ -141,7 +128,6 @@
       line-height: 1.7;
       animation: fadeUp 0.6s 0.2s ease both;
     }
-
     .hero-actions {
       display: flex; gap: 14px; margin-top: 40px;
       animation: fadeUp 0.6s 0.3s ease both;
@@ -149,25 +135,20 @@
     .btn-primary {
       font-size: 14px; font-weight: 500;
       padding: 13px 28px;
-      background: var(--accent);
-      color: #fff; border-radius: 8px;
-      text-decoration: none;
+      background: var(--accent); color: #fff;
+      border-radius: 8px; text-decoration: none;
       transition: transform var(--transition), box-shadow var(--transition);
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,26,24,0.15); }
-
     .btn-secondary {
       font-size: 14px; font-weight: 500;
       padding: 13px 28px;
-      background: transparent;
-      color: var(--text);
+      background: transparent; color: var(--text);
       border: 1.5px solid var(--border);
-      border-radius: 8px;
-      text-decoration: none;
+      border-radius: 8px; text-decoration: none;
       transition: border-color var(--transition), transform var(--transition);
     }
     .btn-secondary:hover { border-color: var(--text); transform: translateY(-2px); }
-
     .hero-stats {
       display: flex; gap: 40px;
       margin-top: 64px; padding-top: 40px;
@@ -176,41 +157,33 @@
     }
     .stat-num {
       font-family: 'DM Serif Display', serif;
-      font-size: 32px; line-height: 1;
-      color: var(--text);
+      font-size: 32px; line-height: 1; color: var(--text);
     }
     .stat-label {
       font-size: 12px; font-weight: 400;
-      color: var(--text-muted);
-      margin-top: 4px;
+      color: var(--text-muted); margin-top: 4px;
       text-transform: uppercase; letter-spacing: 0.08em;
     }
 
-    /* ── SECTIONS COMMONS ── */
+    /* ── SECTIONS ── */
     section { padding: 100px 60px; }
-
     .section-label {
       font-family: 'DM Mono', monospace;
       font-size: 11px; font-weight: 500;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 12px;
+      color: var(--text-muted); margin-bottom: 12px;
       display: flex; align-items: center; gap: 12px;
     }
     .section-label::before {
-      content: '';
-      display: block; width: 24px; height: 1px;
-      background: var(--text-muted);
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--text-muted);
     }
-
     .section-title {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(36px, 4vw, 52px);
       line-height: 1.1; letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 16px;
+      color: var(--text); margin-bottom: 16px;
     }
-
     .section-desc {
       font-size: 16px; font-weight: 300;
       color: var(--text-muted); max-width: 480px;
@@ -219,63 +192,46 @@
 
     /* ── À PROPOS ── */
     #apropos { background: var(--surface); }
-
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; align-items: start;
     }
-
     .about-text p {
       font-size: 16px; font-weight: 300;
-      color: var(--text-muted); line-height: 1.8;
-      margin-bottom: 20px;
+      color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;
     }
     .about-text p strong { color: var(--text); font-weight: 500; }
-
     .about-tools { margin-top: 32px; }
     .about-tools h4 {
       font-family: 'DM Mono', monospace;
       font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted);
-      margin-bottom: 14px;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;
     }
-    .tool-list {
-      display: flex; flex-wrap: wrap; gap: 8px;
-    }
+    .tool-list { display: flex; flex-wrap: wrap; gap: 8px; }
     .tool-tag {
       font-family: 'DM Mono', monospace;
       font-size: 12px; font-weight: 400;
       padding: 6px 12px;
       background: var(--tag-bg); color: var(--tag-text);
-      border-radius: 4px;
-      transition: background var(--transition);
+      border-radius: 4px; transition: background var(--transition);
     }
     .tool-tag:hover { background: var(--border); }
-
-    .about-info { display: flex; flex-direction: column; gap: 0; }
+    .about-info { display: flex; flex-direction: column; }
     .info-card {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 24px 0; border-bottom: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
     }
     .info-card:first-child { border-top: 1px solid var(--border); }
-    .info-key {
-      font-size: 13px; font-weight: 400; color: var(--text-muted);
-    }
-    .info-val {
-      font-size: 13px; font-weight: 500; color: var(--text);
-      text-align: right;
-    }
+    .info-key { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+    .info-val { font-size: 13px; font-weight: 500; color: var(--text); text-align: right; }
 
     /* ── COMPÉTENCES ── */
     #competences { background: var(--bg); }
-
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-
     .skill-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -285,62 +241,44 @@
       position: relative; overflow: hidden;
     }
     .skill-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent2);
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--accent2);
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s ease;
     }
     .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,26,24,0.08); }
     .skill-card:hover::before { transform: scaleX(1); }
-
-    .skill-icon {
-      font-size: 22px; margin-bottom: 14px;
-    }
-    .skill-name {
-      font-size: 15px; font-weight: 600; color: var(--text);
-      margin-bottom: 8px;
-    }
-    .skill-desc {
-      font-size: 13px; font-weight: 300; color: var(--text-muted);
-      line-height: 1.6; margin-bottom: 16px;
-    }
+    .skill-icon { font-size: 22px; margin-bottom: 14px; }
+    .skill-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .skill-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .skill-tag {
       font-family: 'DM Mono', monospace;
       font-size: 11px; padding: 4px 9px;
-      background: var(--tag-bg); color: var(--tag-text);
-      border-radius: 3px;
+      background: var(--tag-bg); color: var(--tag-text); border-radius: 3px;
     }
 
     /* ── PROJETS ── */
     #projets { background: var(--surface); }
-
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 24px;
     }
-
     .project-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
       transition: transform var(--transition), box-shadow var(--transition);
       display: flex; flex-direction: column;
     }
     .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,26,24,0.1); }
-
     .project-header {
       padding: 28px 28px 0;
       display: flex; justify-content: space-between; align-items: flex-start;
     }
     .project-num {
       font-family: 'DM Mono', monospace;
-      font-size: 11px; font-weight: 500; color: var(--text-muted);
-      letter-spacing: 0.1em;
+      font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.1em;
     }
     .project-status {
       font-family: 'DM Mono', monospace;
@@ -348,20 +286,15 @@
       padding: 4px 10px; border-radius: 20px;
       letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .status-progress { background: rgba(74,103,65,0.1); color: var(--accent2); }
-    .status-planned { background: rgba(107,107,101,0.1); color: var(--text-muted); }
-    .status-done { background: rgba(26,26,24,0.08); color: var(--text); }
-
+    .status-done     { background: rgba(74,103,65,0.1);   color: var(--accent2); }
+    .status-progress { background: rgba(74,103,65,0.1);   color: var(--accent2); }
+    .status-planned  { background: rgba(107,107,101,0.1); color: var(--text-muted); }
     .project-body { padding: 16px 28px 24px; flex: 1; }
     .project-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 22px; line-height: 1.2;
-      color: var(--text); margin-bottom: 10px;
+      font-size: 22px; line-height: 1.2; color: var(--text); margin-bottom: 10px;
     }
-    .project-desc {
-      font-size: 14px; font-weight: 300; color: var(--text-muted);
-      line-height: 1.7; margin-bottom: 20px;
-    }
+    .project-desc { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
     .project-tag {
       font-family: 'DM Mono', monospace;
@@ -369,48 +302,37 @@
       background: var(--surface); color: var(--tag-text);
       border: 1px solid var(--border); border-radius: 3px;
     }
-
     .project-footer {
-      padding: 16px 28px;
-      border-top: 1px solid var(--border);
+      padding: 16px 28px; border-top: 1px solid var(--border);
       display: flex; gap: 12px;
     }
     .project-link {
       font-size: 12px; font-weight: 500; color: var(--text-muted);
-      text-decoration: none;
-      display: flex; align-items: center; gap: 5px;
+      text-decoration: none; display: flex; align-items: center; gap: 5px;
       transition: color var(--transition);
     }
     .project-link:hover { color: var(--text); }
-
     .add-project-card {
-      border: 2px dashed var(--border);
-      border-radius: var(--radius);
+      border: 2px dashed var(--border); border-radius: var(--radius);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      padding: 60px 28px;
-      cursor: pointer;
+      padding: 60px 28px; cursor: pointer;
       transition: border-color var(--transition), background var(--transition);
       text-align: center; gap: 12px;
     }
     .add-project-card:hover { border-color: var(--text-muted); background: var(--surface2); }
     .add-icon { font-size: 28px; opacity: 0.3; }
-    .add-text {
-      font-size: 13px; font-weight: 400; color: var(--text-muted);
-    }
+    .add-text { font-size: 13px; font-weight: 400; color: var(--text-muted); }
 
     /* ── CONTACT ── */
     #contact {
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-      padding: 100px 60px;
+      background: var(--accent); color: #fff;
+      text-align: center; padding: 100px 60px;
     }
     #contact .section-label { color: rgba(255,255,255,0.4); justify-content: center; }
     #contact .section-label::before { background: rgba(255,255,255,0.3); }
     #contact .section-title { color: #fff; text-align: center; margin-bottom: 16px; }
     #contact .section-desc { color: rgba(255,255,255,0.6); text-align: center; margin: 0 auto 48px; }
-
     .contact-links {
       display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
     }
@@ -424,24 +346,19 @@
     .contact-btn:hover { transform: translateY(-2px); opacity: 0.85; }
     .contact-btn.light { background: #fff; color: var(--text); }
     .contact-btn.outline {
-      background: transparent;
-      color: #fff;
+      background: transparent; color: #fff;
       border: 1.5px solid rgba(255,255,255,0.3);
     }
-
     .contact-form-wrap {
       max-width: 480px; margin: 56px auto 0;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius);
-      padding: 32px;
-      text-align: left;
+      border-radius: var(--radius); padding: 32px; text-align: left;
     }
     .form-group { margin-bottom: 20px; }
     .form-group label {
       display: block; font-size: 12px; font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 8px; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.5); margin-bottom: 8px; letter-spacing: 0.05em;
     }
     .form-group input,
     .form-group textarea {
@@ -459,7 +376,6 @@
     .form-group input:focus,
     .form-group textarea:focus { border-color: rgba(255,255,255,0.4); }
     .form-group textarea { height: 100px; }
-
     .form-submit {
       width: 100%; padding: 13px;
       background: #fff; color: var(--text);
@@ -467,27 +383,23 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 14px; font-weight: 600;
       cursor: pointer;
-      transition: opacity var(--transition);
+      transition: opacity var(--transition), background var(--transition), color var(--transition);
     }
     .form-submit:hover { opacity: 0.88; }
+    .form-submit:disabled { cursor: not-allowed; opacity: 0.7; }
 
     /* ── FOOTER ── */
     footer {
-      padding: 28px 60px;
-      background: var(--bg);
+      padding: 28px 60px; background: var(--bg);
       border-top: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 12px;
     }
-    .footer-copy {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; color: var(--text-muted);
-    }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); }
     .footer-links { display: flex; gap: 24px; }
     .footer-links a {
       font-size: 12px; color: var(--text-muted);
-      text-decoration: none;
-      transition: color var(--transition);
+      text-decoration: none; transition: color var(--transition);
     }
     .footer-links a:hover { color: var(--text); }
 
@@ -500,7 +412,6 @@
       0%, 100% { opacity: 1; transform: scale(1); }
       50%       { opacity: 0.5; transform: scale(0.8); }
     }
-
     .reveal {
       opacity: 0; transform: translateY(28px);
       transition: opacity 0.7s ease, transform 0.7s ease;
@@ -520,10 +431,6 @@
       .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  emailjs.init(6oq6D_rliPMDQVnxX); // ← remplace ici
-</script>
 </head>
 <body>
 
@@ -627,7 +534,7 @@
       </div>
       <div class="info-card">
         <span class="info-key">GitHub</span>
-        <span class="info-val">github.com/imad-eddine</span>
+        <span class="info-val">github.com/ImBelhouideg</span>
       </div>
     </div>
   </div>
@@ -641,7 +548,6 @@
     <p class="section-desc">Un aperçu des domaines et technologies sur lesquels je travaille et me forme activement.</p>
   </div>
   <div class="skills-grid reveal">
-
     <div class="skill-card">
       <div class="skill-icon">🔄</div>
       <div class="skill-name">CI/CD Pipelines</div>
@@ -652,7 +558,6 @@
         <span class="skill-tag">GitLab CI</span>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-icon">🐳</div>
       <div class="skill-name">Conteneurisation</div>
@@ -663,7 +568,6 @@
         <span class="skill-tag">Helm</span>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-icon">☁️</div>
       <div class="skill-name">Cloud & IaC</div>
@@ -674,7 +578,6 @@
         <span class="skill-tag">Ansible</span>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-icon">📊</div>
       <div class="skill-name">Monitoring & Observabilité</div>
@@ -685,7 +588,6 @@
         <span class="skill-tag">ELK Stack</span>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-icon">🐧</div>
       <div class="skill-name">Linux & Scripting</div>
@@ -696,7 +598,6 @@
         <span class="skill-tag">Python</span>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-icon">🔒</div>
       <div class="skill-name">DevSecOps</div>
@@ -707,7 +608,6 @@
         <span class="skill-tag">Vault</span>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -719,28 +619,27 @@
     <p class="section-desc">Des projets concrets qui reflètent mon apprentissage et mes ambitions en DevOps.</p>
   </div>
   <div class="projects-grid reveal">
-
     <div class="project-card">
       <div class="project-header">
         <span class="project-num">01</span>
-        <span class="project-status status-progress">En cours</span>
+        <span class="project-status status-done">✅ Terminé</span>
       </div>
       <div class="project-body">
-        <h3 class="project-title">Pipeline CI/CD pour ce Portfolio</h3>
-        <p class="project-desc">Mise en place d'une pipeline complète GitHub Actions : lint, build, test, et déploiement automatique du portfolio sur un serveur cloud à chaque push sur main.</p>
+        <h3 class="project-title">Pipeline CI/CD — Portfolio</h3>
+        <p class="project-desc">Pipeline complète GitHub Actions : build Docker, push sur GHCR, et déploiement automatique sur AWS EC2 à chaque push sur main.</p>
         <div class="project-tags">
           <span class="project-tag">GitHub Actions</span>
           <span class="project-tag">Docker</span>
           <span class="project-tag">Nginx</span>
           <span class="project-tag">AWS EC2</span>
+          <span class="project-tag">GHCR</span>
         </div>
       </div>
       <div class="project-footer">
-        <a href="#" class="project-link">⟶ GitHub</a>
+        <a href="https://github.com/ImBelhouideg/portfolio" target="_blank" class="project-link">⟶ GitHub</a>
         <a href="#" class="project-link">⟶ Live</a>
       </div>
     </div>
-
     <div class="project-card">
       <div class="project-header">
         <span class="project-num">02</span>
@@ -760,7 +659,6 @@
         <a href="#" class="project-link">⟶ GitHub</a>
       </div>
     </div>
-
     <div class="project-card">
       <div class="project-header">
         <span class="project-num">03</span>
@@ -780,12 +678,10 @@
         <a href="#" class="project-link">⟶ GitHub</a>
       </div>
     </div>
-
     <div class="add-project-card">
       <div class="add-icon">+</div>
       <div class="add-text">Prochains projets à venir…<br>Revenez régulièrement 🚀</div>
     </div>
-
   </div>
 </section>
 
@@ -796,39 +692,27 @@
     <h2 class="section-title">Travaillons ensemble</h2>
     <p class="section-desc">Vous avez une opportunité de stage, une question, ou juste envie d'échanger sur le DevOps ? Je suis disponible.</p>
     <div class="contact-links">
-      <a href="mailto:imad@example.com" class="contact-btn light">✉ Email</a>
-      <a href="https://linkedin.com/in/imad-eddine" class="contact-btn outline">in LinkedIn</a>
-      <a href="https://github.com/imad-eddine" class="contact-btn outline">⌥ GitHub</a>
+      <a href="mailto:imadeddine@example.com" class="contact-btn light">✉ Email</a>
+      <a href="https://linkedin.com/in/imad-eddine-belhouideg" target="_blank" class="contact-btn outline">in LinkedIn</a>
+      <a href="https://github.com/ImBelhouideg" target="_blank" class="contact-btn outline">⌥ GitHub</a>
     </div>
   </div>
+
+  <!-- Formulaire EmailJS -->
   <div class="contact-form-wrap reveal">
     <div class="form-group">
       <label>Votre nom</label>
-      <input type="text" placeholder="Jean Dupont" />
+      <input type="text" id="from_name" placeholder="Jean Dupont" />
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" placeholder="jean@exemple.com" />
+      <input type="email" id="from_email" placeholder="jean@exemple.com" />
     </div>
     <div class="form-group">
       <label>Message</label>
-      <textarea placeholder="Bonjour Imad, je vous contacte pour…"></textarea>
+      <textarea id="message" placeholder="Bonjour Imad, je vous contacte pour…"></textarea>
     </div>
-    <div class="contact-form-wrap">
-  <div class="form-group">
-    <label>Votre nom</label>
-    <input type="text" id="from_name" placeholder="Jean Dupont" />
-  </div>
-  <div class="form-group">
-    <label>Email</label>
-    <input type="email" id="from_email" placeholder="jean@exemple.com" />
-  </div>
-  <div class="form-group">
-    <label>Message</label>
-    <textarea id="message" placeholder="Bonjour Imad, je vous contacte pour…"></textarea>
-  </div>
-  <button class="form-submit" onclick="sendEmail()">Envoyer le message →</button>
-</div>
+    <button class="form-submit" onclick="sendEmail()">Envoyer le message →</button>
   </div>
 </section>
 
@@ -836,62 +720,96 @@
 <footer>
   <span class="footer-copy">© 2025 Imad Eddine Belhouideg — Fait avec ☕ & passion</span>
   <div class="footer-links">
-    <a href="https://github.com/imad-eddine">GitHub</a>
-    <a href="https://linkedin.com/in/imad-eddine">LinkedIn</a>
+    <a href="https://github.com/ImBelhouideg" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/imad-eddine-belhouideg" target="_blank">LinkedIn</a>
     <a href="#">CV</a>
   </div>
 </footer>
 
 <script>
-function sendEmail() {
-  const btn = document.querySelector('.form-submit');
+  // ── Scroll reveal ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
 
-  const name    = document.getElementById('from_name').value.trim();
-  const email   = document.getElementById('from_email').value.trim();
-  const message = document.getElementById('message').value.trim();
-
-  // Validation basique
-  if (!name || !email || !message) {
-    btn.textContent = '⚠️ Remplis tous les champs !';
-    btn.style.background = 'rgba(255,100,100,0.2)';
-    setTimeout(() => {
-      btn.textContent = 'Envoyer le message →';
-      btn.style.background = '';
-    }, 3000);
-    return;
-  }
-
-  btn.textContent = 'Envoi en cours…';
-  btn.disabled = true;
-
-  emailjs.send(service_37nx4pd, template_6mcc7z1, {
-    from_name  : name,
-    from_email : email,
-    message    : message
-  })
-  .then(() => {
-    btn.textContent = '✓ Message envoyé !';
-    btn.style.background = 'rgba(74,103,65,0.2)';
-    btn.style.color = '#a8c89e';
-    // Vider les champs
-    document.getElementById('from_name').value  = '';
-    document.getElementById('from_email').value = '';
-    document.getElementById('message').value    = '';
-  })
-  .catch((error) => {
-    console.error('EmailJS error:', error);
-    btn.textContent = '❌ Erreur, réessaie';
-    btn.style.background = 'rgba(255,100,100,0.2)';
-  })
-  .finally(() => {
-    setTimeout(() => {
-      btn.textContent = 'Envoyer le message →';
-      btn.style.background = '';
-      btn.style.color = '';
-      btn.disabled = false;
-    }, 4000);
+  // ── Active nav link ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
   });
-}
+
+  // ── EmailJS — Formulaire de contact ──
+  function sendEmail() {
+    const btn      = document.querySelector('.form-submit');
+    const name     = document.getElementById('from_name').value.trim();
+    const email    = document.getElementById('from_email').value.trim();
+    const message  = document.getElementById('message').value.trim();
+
+    // Validation
+    if (!name || !email || !message) {
+      btn.textContent = '⚠️ Remplis tous les champs !';
+      btn.style.background = 'rgba(255,100,100,0.25)';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        btn.textContent = 'Envoyer le message →';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 3000);
+      return;
+    }
+
+    // Envoi
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    emailjs.send(
+      "service_37nx4pd",    // ✅ Ton Service ID
+      "template_6mcc7z1",   // ✅ Ton Template ID
+      {
+        from_name  : name,
+        from_email : email,
+        message    : message
+      }
+    )
+    .then(() => {
+      btn.textContent = '✓ Message envoyé !';
+      btn.style.background = 'rgba(74,103,65,0.3)';
+      btn.style.color = '#a8c89e';
+      // Vider les champs
+      document.getElementById('from_name').value  = '';
+      document.getElementById('from_email').value = '';
+      document.getElementById('message').value    = '';
+    })
+    .catch((err) => {
+      console.error('EmailJS error:', err);
+      btn.textContent = '❌ Erreur, réessaie';
+      btn.style.background = 'rgba(255,80,80,0.2)';
+      btn.style.color = '#ffaaaa';
+    })
+    .finally(() => {
+      setTimeout(() => {
+        btn.textContent = 'Envoyer le message →';
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.disabled = false;
+      }, 4000);
+    });
+  }
 </script>
+
 </body>
 </html>
