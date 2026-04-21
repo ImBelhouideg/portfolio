@@ -520,6 +520,10 @@
       .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init(6oq6D_rliPMDQVnxX); // ← remplace ici
+</script>
 </head>
 <body>
 
@@ -810,7 +814,21 @@
       <label>Message</label>
       <textarea placeholder="Bonjour Imad, je vous contacte pour…"></textarea>
     </div>
-    <button class="form-submit">Envoyer le message →</button>
+    <div class="contact-form-wrap">
+  <div class="form-group">
+    <label>Votre nom</label>
+    <input type="text" id="from_name" placeholder="Jean Dupont" />
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" id="from_email" placeholder="jean@exemple.com" />
+  </div>
+  <div class="form-group">
+    <label>Message</label>
+    <textarea id="message" placeholder="Bonjour Imad, je vous contacte pour…"></textarea>
+  </div>
+  <button class="form-submit" onclick="sendEmail()">Envoyer le message →</button>
+</div>
   </div>
 </section>
 
@@ -825,42 +843,55 @@
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(r => observer.observe(r));
+function sendEmail() {
+  const btn = document.querySelector('.form-submit');
 
-  // Active nav link
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
-    });
-  });
+  const name    = document.getElementById('from_name').value.trim();
+  const email   = document.getElementById('from_email').value.trim();
+  const message = document.getElementById('message').value.trim();
 
-  // Contact form (demo)
-  document.querySelector('.form-submit').addEventListener('click', function() {
-    this.textContent = '✓ Message envoyé !';
-    this.style.background = 'rgba(74,103,65,0.2)';
-    this.style.color = '#a8c89e';
+  // Validation basique
+  if (!name || !email || !message) {
+    btn.textContent = '⚠️ Remplis tous les champs !';
+    btn.style.background = 'rgba(255,100,100,0.2)';
     setTimeout(() => {
-      this.textContent = 'Envoyer le message →';
-      this.style.background = '';
-      this.style.color = '';
+      btn.textContent = 'Envoyer le message →';
+      btn.style.background = '';
     }, 3000);
+    return;
+  }
+
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+
+  emailjs.send(service_37nx4pd, template_6mcc7z1, {
+    from_name  : name,
+    from_email : email,
+    message    : message
+  })
+  .then(() => {
+    btn.textContent = '✓ Message envoyé !';
+    btn.style.background = 'rgba(74,103,65,0.2)';
+    btn.style.color = '#a8c89e';
+    // Vider les champs
+    document.getElementById('from_name').value  = '';
+    document.getElementById('from_email').value = '';
+    document.getElementById('message').value    = '';
+  })
+  .catch((error) => {
+    console.error('EmailJS error:', error);
+    btn.textContent = '❌ Erreur, réessaie';
+    btn.style.background = 'rgba(255,100,100,0.2)';
+  })
+  .finally(() => {
+    setTimeout(() => {
+      btn.textContent = 'Envoyer le message →';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+    }, 4000);
   });
+}
 </script>
 </body>
 </html>
