@@ -57,7 +57,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # Pull la dernière image
-            docker pull ghcr.io/${{ github.repository_owner }}/portfolio:latest
+            docker pull ghcr.io/imbelhouideg/portfolio:latest
 
             # Stopper et supprimer l'ancien conteneur s'il existe
             docker stop portfolio 2>/dev/null || true
@@ -68,7 +68,7 @@ jobs:
               --name portfolio \
               --restart unless-stopped \
               -p 80:80 \
-              ghcr.io/${{ github.repository_owner }}/portfolio:latest
+              ghcr.io/imbelhouideg/portfolio:latest
 
             # Nettoyer les vieilles images
             docker image prune -f
