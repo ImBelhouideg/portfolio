@@ -97,7 +97,7 @@ jobs:
 
       - name: Deploy sur EKS avec Helm
         run: |
-          helm upgrade portfolio ./portfolio \
+          helm upgrade portfolio ./helm/portfolio \
             --set image.repository=ghcr.io/imbelhouideg/portfolio \
             --set image.tag=971555852d852e064abea7ea186c6b0f6e8bd0f1 \
             --reuse-values
