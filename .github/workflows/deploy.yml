@@ -97,11 +97,10 @@ jobs:
 
       - name: Deploy sur EKS avec Helm
         run: |
-          helm upgrade portfolio \
+          helm upgrade portfolio ./portfolio \
             --set image.repository=ghcr.io/imbelhouideg/portfolio \
-            --set image.tag=${{ github.sha }} \
-            --reuse-values \
-            portfolio
+            --set image.tag=971555852d852e064abea7ea186c6b0f6e8bd0f1 \
+            --reuse-values
       - name: Vérifier le déploiement
         run: |
           kubectl rollout status deployment/portfolio
